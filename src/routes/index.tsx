@@ -82,7 +82,7 @@ function Index() {
               style={{ marginLeft: `${i * 14}%`, width: `${62 - i * 6}%` }}
             >
               <div className="relative h-full w-[45%] shrink-0 overflow-hidden border-x border-graphite/60">
-                <Plate src={[waves.url, oracle.url, turning.url][i]} pos={["30% 35%", "25% 35%", "45% 40%"][i]} className="scale-150" />
+                <Plate src={[waves.url, oracle.url, turning.url][i]!} pos={["30% 35%", "25% 35%", "45% 40%"][i]!} className="scale-150" />
               </div>
               <div className="h-16 w-16 shrink-0 rounded-full bg-ink" />
               <Lines n={3} className="min-w-0 flex-1" />
@@ -99,7 +99,7 @@ function Index() {
         <div className="relative col-span-12 md:col-span-4">
           <div className="absolute -left-[45%] top-[40%] grid aspect-square w-[130%] place-items-center rounded-full border border-graphite/60 bg-graphite/10">
             <div className="relative grid aspect-square w-[72%] place-items-center overflow-hidden rounded-full border border-graphite/60 bg-graphite/15">
-              <Plate src={observer.url} pos="50% 35%" className="scale-125 slow-spin" />
+              <Plate src={observer.url} pos="50% 30%" className="scale-125 slow-spin" />
             </div>
           </div>
         </div>
