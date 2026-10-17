@@ -63,8 +63,8 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --background: oklch(0.17 0.03 280);
+  --foreground: oklch(0.95 0.02 80);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
@@ -74,12 +74,12 @@
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
+  --muted-foreground: oklch(0.72 0.03 70);
   --accent: oklch(0.968 0.007 247.896);
   --accent-foreground: oklch(0.208 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
+  --border: oklch(0.35 0.04 280);
   --input: oklch(0.929 0.013 255.508);
   --ring: oklch(0.704 0.04 256.788);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -142,3 +142,14 @@
     color: var(--color-foreground);
   }
 }
+
+:root{--sunset:oklch(0.72 0.19 45);--teal:oklch(0.75 0.11 195);--chrome:oklch(0.92 0.01 250);}
+@theme inline{--color-sunset:var(--sunset);--color-teal:var(--teal);--color-chrome:var(--chrome);
+--font-display:"Michroma",sans-serif;--font-serif:"Instrument Serif",serif;--font-sans:"IBM Plex Sans Condensed",sans-serif;}
+body{font-family:var(--font-sans);}
+@utility text-chrome-grad{background:linear-gradient(180deg,oklch(0.98 0 0),oklch(0.6 0.03 250) 55%,oklch(0.9 0.02 60));-webkit-background-clip:text;background-clip:text;color:transparent;}
+@utility bg-sunset-veil{background:linear-gradient(200deg,transparent 40%,color-mix(in oklab,var(--background) 85%,transparent));}
+@utility bg-chrome-band{background:linear-gradient(90deg,var(--sunset),oklch(0.65 0.2 350),var(--teal));}
+@utility bg-sun{background:radial-gradient(circle,oklch(0.85 0.17 70),var(--sunset) 50%,transparent 70%);}
+@utility shadow-glow{box-shadow:0 40px 80px -20px color-mix(in oklab,var(--sunset) 45%,transparent);}
+@utility clip-wedge{clip-path:polygon(0 0,100% 6%,92% 100%,0 88%);}
