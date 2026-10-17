@@ -168,3 +168,20 @@ body{font-family:var(--font-sans);}
 /* Frames: ink hairline + detached ghost outline, inner void vignette */
 @utility frame{border:1px solid var(--ink);outline:1px solid color-mix(in oklab,var(--ink) 25%,transparent);outline-offset:7px;box-shadow:0 30px 60px -30px color-mix(in oklab,var(--ink) 50%,transparent);&::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 70px 14px color-mix(in oklab,var(--ink) 45%,transparent);}}
 @utility frame-x{border-inline:1px solid var(--ink);&::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 40px 8px color-mix(in oklab,var(--ink) 45%,transparent);}}
+
+/* Field signals: --mx/--my (cursor, eased), --sy (scroll), --hp (corridor progress) */
+.field{--mx:0;--my:0;--sy:0;transition:filter 1.2s ease;}
+@utility parallax{translate:calc(var(--mx) * var(--d,1) * -28px) calc(var(--my) * var(--d,1) * -28px);}
+.horizon{transform:rotate(calc(var(--sy) * -5deg)) translateY(calc(var(--sy) * 6vh));transform-origin:20% 80%;}
+.corridor{transform:translateX(calc(var(--hp,0) * -150vw));}
+.night{filter:invert(1);}
+.xray .plate{mix-blend-mode:difference;filter:grayscale(1) contrast(2.2) invert(1);}
+.veil-line{animation:veilLine 1.4s cubic-bezier(.7,0,.2,1) both;transform-origin:center;}
+.veil-top{animation:veilTop 1.2s 1.4s cubic-bezier(.8,0,.2,1) both;}
+.veil-bot{animation:veilBot 1.2s 1.4s cubic-bezier(.8,0,.2,1) both;}
+.veil{animation:veilGone 0s 2.7s both;}
+@keyframes veilLine{0%{transform:scaleX(0)}70%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
+@keyframes veilTop{to{transform:translateY(-100%)}}
+@keyframes veilBot{to{transform:translateY(100%)}}
+@keyframes veilGone{to{visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.veil{display:none}.parallax{translate:none}.horizon{transform:none}}
