@@ -3,10 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Silent Horizon — Pure Layout Study" },
-      { name: "description", content: "A wordless, colourless layout study after Syd Mead and Charles Schridde." },
-      { property: "og:title", content: "Silent Horizon — Pure Layout Study" },
-      { property: "og:description", content: "A wordless, colourless layout study after Syd Mead and Charles Schridde." },
+      { title: "Cantilever — Wireframe Layout Study" },
+      { name: "description", content: "A wordless wireframe: Syd Mead and Charles Schridde expressed through website layout alone." },
+      { property: "og:title", content: "Cantilever — Wireframe Layout Study" },
+      { property: "og:description", content: "Syd Mead and Charles Schridde expressed through website layout alone." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -14,82 +14,98 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const towers = [38, 62, 48, 88, 54, 100, 70, 44, 80, 58, 34, 66];
+/* Wireframe primitives: grey blocks stand in for content */
+const Box = ({ className = "" }: { className?: string }) => (
+  <div className={`border border-graphite/60 bg-graphite/15 ${className}`} />
+);
+const Lines = ({ n = 3, className = "" }: { n?: number; className?: string }) => (
+  <div className={`space-y-2 ${className}`}>
+    {Array.from({ length: n }).map((_, i) => (
+      <div key={i} className="h-2 rounded-full bg-graphite/40" style={{ width: `${100 - i * 14}%` }} />
+    ))}
+  </div>
+);
+const Pill = ({ className = "" }: { className?: string }) => (
+  <div className={`h-12 rounded-full bg-ink ${className}`} />
+);
 
 function Index() {
   return (
-    <main aria-label="Layout study" className="min-h-screen overflow-x-hidden bg-paper">
-      {/* 1 — Tilted horizon: cantilever over the void, capsule gliding beneath */}
-      <section className="relative h-screen overflow-hidden">
-        <div className="absolute inset-x-[-20%] bottom-[-30%] h-[75%] origin-top floor-grid opacity-30 [transform:perspective(600px)_rotateX(68deg)_rotate(-4deg)]" />
-        <div className="absolute left-[-10%] top-[56%] h-px w-[130%] -rotate-[4deg] bg-ink" />
-        {/* cliff */}
-        <div className="absolute left-0 top-[18%] h-[90%] w-[26%] bg-ink [clip-path:polygon(0_0,70%_0,100%_18%,82%_45%,94%_70%,60%_100%,0_100%)]" />
-        {/* cantilevered house */}
-        <div className="absolute left-[14%] top-[20%] h-[13%] w-[58%] -rotate-[4deg] border-[3px] border-ink">
-          <div className="grid h-full grid-cols-6">
-            {Array.from({ length: 6 }).map((_, i) => <div key={i} className="border-r border-ink last:border-r-0" />)}
+    <main aria-label="Wireframe layout study" className="min-h-screen overflow-x-hidden bg-paper pb-0">
+      {/* NAV — a long low beam cantilevered from the right edge; logo overhangs its free end */}
+      <header className="relative h-28">
+        <div className="absolute right-0 top-8 flex h-12 w-[72%] items-center justify-end gap-8 rounded-l-full border border-graphite/60 bg-graphite/15 pr-10">
+          {[1, 2, 3, 4].map((i) => <div key={i} className="h-2 w-14 rounded-full bg-graphite/50" />)}
+          <div className="h-8 w-28 rounded-full bg-ink" />
+        </div>
+        <Box className="absolute left-[22%] top-4 h-20 w-20 rounded-full" />
+      </header>
+
+      {/* HERO — panoramic slab sitting low on a tilted horizon; headline hangs off the top-left, CTA pierces the right edge */}
+      <section className="relative h-[88vh]">
+        <div className="absolute left-[6%] top-[14%] w-[44%] -rotate-[2deg]">
+          <div className="space-y-3">
+            <div className="h-10 w-full bg-ink" />
+            <div className="ml-[18%] h-10 w-[82%] bg-ink" />
+            <div className="ml-[36%] h-10 w-[50%] bg-ink" />
           </div>
-          <div className="absolute -bottom-6 left-0 h-6 w-full bg-ink [clip-path:polygon(0_0,100%_0,96%_100%,0_100%)]" />
+          <Lines n={3} className="ml-[36%] mt-8 w-[50%]" />
         </div>
-        {/* single support strut */}
-        <div className="absolute left-[24%] top-[36%] h-[24%] w-[3px] origin-top rotate-[22deg] bg-ink" />
-        {/* streamlined vehicle */}
-        <div className="absolute right-[6%] top-[64%] h-14 w-[38%] -rotate-[9deg]">
-          <div className="h-full w-full rounded-[100%_40%_40%_100%/100%_60%_60%_100%] bg-ink" />
-          <div className="absolute left-[30%] top-[-45%] h-[70%] w-[30%] rounded-t-full border-[3px] border-b-0 border-ink" />
-          <div className="absolute right-[100%] top-1/2 h-[2px] w-[70%] bg-ink" />
-          <div className="absolute right-[100%] top-[25%] h-px w-[40%] bg-ink" />
-          <div className="absolute right-[100%] top-[75%] h-px w-[55%] bg-ink" />
-        </div>
-        {/* setting sun as an outline */}
-        <div className="absolute right-[20%] top-[38%] h-40 w-40 rounded-full border-[3px] border-ink [clip-path:inset(0_0_50%_0)] -rotate-[4deg]" />
+        <Box className="absolute bottom-[10%] left-[-4%] h-[42%] w-[96%] -rotate-[2deg] rounded-tr-[12rem]" />
+        <Pill className="absolute bottom-[34%] right-[2%] w-56 -rotate-[2deg]" />
+        <div className="absolute bottom-[4%] left-0 h-px w-full -rotate-[2deg] bg-ink" />
       </section>
 
-      {/* 2 — Asymmetric cantilevered stair */}
-      <section className="relative mx-auto grid max-w-7xl grid-cols-12 gap-6 px-6 py-40">
-        <div className="col-span-12 space-y-8 md:col-span-6 md:col-start-2">
-          {[70, 90, 55, 100, 40].map((w, i) => (
-            <div key={i} className="relative h-10 bg-ink" style={{ width: `${w}%`, marginLeft: `${i * 9}%` }}>
-              <div className="absolute -bottom-3 right-0 h-3 w-1/3 bg-graphite" />
+      {/* FEATURES — three long, low cards stepped out like cantilevered floors */}
+      <section className="relative mx-auto max-w-7xl px-6 py-28">
+        <Lines n={2} className="mb-16 ml-auto w-64" />
+        <div className="space-y-6 [perspective:1400px]">
+          {[0, 1, 2].map((i) => (
+            <div
+              key={i}
+              className="flex h-36 items-center gap-8 border border-graphite/60 bg-graphite/15 px-8 [transform:rotateY(-14deg)]"
+              style={{ marginLeft: `${i * 14}%`, width: `${62 - i * 6}%` }}
+            >
+              <div className="h-16 w-16 shrink-0 rounded-full bg-ink" />
+              <Lines n={3} className="min-w-0 flex-1" />
             </div>
           ))}
         </div>
-        <div className="relative col-span-12 mt-24 h-[60vh] md:col-span-4 md:col-start-9 md:mt-0">
-          <div className="absolute inset-0 -skew-y-6 rounded-tl-[10rem] border-[3px] border-ink" />
-          <div className="absolute inset-[15%] -skew-y-6 rounded-tl-[6rem] bg-ink" />
-        </div>
       </section>
 
-      {/* 3 — Sunken lounge seen from above, picture window beyond */}
-      <section className="relative h-[110vh] overflow-hidden">
-        <div className="absolute left-[8%] right-[30%] top-[6%] h-[34%] border-[3px] border-ink">
-          <div className="absolute inset-x-0 bottom-0 flex h-full items-end gap-[2%] px-[4%]">
-            {towers.map((h, i) => (
-              <div key={i} className="flex-1 bg-ink [clip-path:polygon(15%_0,85%_0,100%_100%,0_100%)]" style={{ height: `${h}%` }} />
-            ))}
+      {/* SHOWCASE — sunken circular testimonial bowl beside a wide picture-window panel */}
+      <section className="relative grid h-[90vh] grid-cols-12 gap-6 px-6">
+        <Box className="col-span-12 h-[55vh] self-start md:col-span-8 md:mt-10" />
+        <div className="relative col-span-12 md:col-span-4">
+          <div className="absolute -left-[45%] top-[40%] grid aspect-square w-[130%] place-items-center rounded-full border border-graphite/60 bg-graphite/10">
+            <div className="grid aspect-square w-[72%] place-items-center rounded-full border border-graphite/60 bg-graphite/15">
+              <Lines n={4} className="w-1/2" />
+            </div>
           </div>
-          <div className="absolute inset-x-0 top-[55%] h-[2px] bg-paper" />
         </div>
-        <div className="absolute left-1/2 top-[66%] h-[90vh] w-[90vh] -translate-x-1/2 -translate-y-1/2 rounded-full rings [transform:translate(-50%,-50%)_perspective(900px)_rotateX(60deg)]" />
-        <div className="absolute left-1/2 top-[66%] h-24 w-56 -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-ink" />
       </section>
 
-      {/* 4 — Diagonal speed band */}
-      <section className="relative my-24 h-40 -rotate-3 speed-lines [mask-image:linear-gradient(90deg,transparent,black_30%,black_70%,transparent)]" />
+      {/* CTA — a single streamlined capsule, deliberately off-axis */}
+      <section className="relative h-[50vh]">
+        <div className="absolute right-[12%] top-1/3 flex h-28 w-[48%] items-center justify-between rounded-full border border-graphite/60 bg-graphite/15 pl-12 pr-4">
+          <Lines n={2} className="w-1/2" />
+          <div className="h-20 w-20 shrink-0 rounded-full bg-ink" />
+        </div>
+      </section>
 
-      {/* 5 — Off-centre arrival: skyline + single capsule button shape */}
-      <section className="relative h-[80vh]">
-        <div className="absolute bottom-0 left-0 flex h-[70%] w-[55%] items-end gap-2 pl-6">
-          {towers.slice().reverse().map((h, i) => (
-            <div key={i} className="flex-1 bg-ink" style={{ height: `${h}%`, borderTopLeftRadius: i % 3 === 0 ? "999px" : 0 }} />
+      {/* FOOTER — heavy ground slab; one column cantilevers up and out over the void */}
+      <footer className="relative mt-24 h-64 bg-ink">
+        <div className="absolute -top-24 left-[8%] h-40 w-[34%] border border-graphite/60 bg-paper p-6">
+          <Lines n={4} />
+        </div>
+        <div className="absolute bottom-10 right-8 flex gap-16">
+          {[0, 1, 2].map((i) => (
+            <div key={i} className="w-24 space-y-2">
+              {[1, 2, 3].map((j) => <div key={j} className="h-2 rounded-full bg-graphite/60" />)}
+            </div>
           ))}
         </div>
-        <div className="absolute right-[10%] top-[30%] h-20 w-80 translate-x-8 rounded-full border-[3px] border-ink">
-          <div className="absolute right-3 top-1/2 h-12 w-12 -translate-y-1/2 rounded-full bg-ink" />
-        </div>
-        <div className="absolute right-[10%] top-[30%] mt-32 h-[3px] w-[40%] bg-ink" />
-      </section>
+      </footer>
     </main>
   );
 }
