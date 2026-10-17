@@ -94,7 +94,7 @@ function Index() {
       {/* SHOWCASE — sunken circular testimonial bowl beside a wide picture-window panel */}
       <section className="relative grid h-[100vh] grid-cols-12 gap-10 px-10">
         <div className="relative col-span-12 h-[55vh] self-start overflow-hidden frame md:col-span-8 md:mt-10">
-          <Plate src={orders.url} pos="40% 40%" className="scale-[1.6]" />
+          <Plate src={orders.url} pos="36% 45%" className="scale-[2]" />
         </div>
         <div className="relative col-span-12 md:col-span-4">
           <div className="absolute -left-[45%] top-[40%] grid aspect-square w-[130%] place-items-center rounded-full border border-graphite/60 bg-graphite/10">
