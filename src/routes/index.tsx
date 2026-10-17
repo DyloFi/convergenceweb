@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const specs = [
+const specs: [string, string, string][] = [
   ["01", "Habitat", "Living rooms that hang over the void, held by a single beam of faith and steel."],
   ["02", "Transit", "Vehicles drawn as one continuous line — chrome skin, no seams, no apology."],
   ["03", "Signal", "The whole household, tuned to the same warm frequency at dusk."],
