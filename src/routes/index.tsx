@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import singularity from "@/assets/singularity.jpg.asset.json";
 import oracle from "@/assets/oracle.webp.asset.json";
 import waves from "@/assets/waves.webp.asset.json";
@@ -7,9 +8,39 @@ import orders from "@/assets/orders.webp.asset.json";
 import turning from "@/assets/turning.webp.asset.json";
 
 /* Drawings sink into the paper: multiply blend, desaturated, cropped to their structures */
-const Plate = ({ src, pos = "center", className = "" }: { src: string; pos?: string; className?: string }) => (
-  <img src={src} alt="" loading="lazy" className={`plate absolute inset-0 h-full w-full object-cover ${className}`} style={{ objectPosition: pos }} />
+const Plate = ({ src, pos = "center", className = "", depth = 1 }: { src: string; pos?: string; className?: string; depth?: number }) => (
+  <img src={src} alt="" loading="lazy" className={`plate parallax absolute inset-0 h-full w-full object-cover ${className}`} style={{ objectPosition: pos, ["--d" as string]: depth }} />
 );
+
+/* Cursor (momentum) + scroll signals written to CSS vars — feature 12 & 14 */
+function useFieldSignals(root: React.RefObject<HTMLElement | null>, strip: React.RefObject<HTMLElement | null>) {
+  useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    let tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+    const move = (e: PointerEvent) => {
+      tx = e.clientX / innerWidth - 0.5;
+      ty = e.clientY / innerHeight - 0.5;
+    };
+    const tick = () => {
+      x += (tx - x) * 0.06;
+      y += (ty - y) * 0.06;
+      el.style.setProperty("--mx", x.toFixed(4));
+      el.style.setProperty("--my", y.toFixed(4));
+      el.style.setProperty("--sy", Math.min(scrollY / innerHeight, 1.5).toFixed(4));
+      const s = strip.current;
+      if (s) {
+        const r = s.getBoundingClientRect();
+        const p = Math.min(Math.max(-r.top / (r.height - innerHeight), 0), 1);
+        s.style.setProperty("--hp", p.toFixed(4));
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    addEventListener("pointermove", move);
+    raf = requestAnimationFrame(tick);
+    return () => { removeEventListener("pointermove", move); cancelAnimationFrame(raf); };
+  }, [root, strip]);
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -41,13 +72,42 @@ const Pill = ({ className = "" }: { className?: string }) => (
 );
 
 function Index() {
+  const root = useRef<HTMLElement>(null);
+  const strip = useRef<HTMLElement>(null);
+  const [night, setNight] = useState(false);
+  const [xray, setXray] = useState(false);
+  const hold = useRef<number | undefined>(undefined);
+  useFieldSignals(root, strip);
+
   return (
-    <main aria-label="Wireframe layout study" className="min-h-screen overflow-x-hidden bg-paper pb-0">
+    <main
+      ref={root}
+      aria-label="Wireframe layout study"
+      className={`field min-h-screen overflow-x-hidden bg-paper pb-0 ${night ? "night" : ""} ${xray ? "xray" : ""}`}
+      /* hidden gesture (feature 8): press and hold anywhere to see through the plates */
+      onPointerDown={() => { hold.current = window.setTimeout(() => setXray(true), 700); }}
+      onPointerUp={() => { clearTimeout(hold.current); setXray(false); }}
+      onPointerLeave={() => { clearTimeout(hold.current); setXray(false); }}
+    >
+      {/* preloader: a horizon line opens the world (feature 15) */}
+      <div aria-hidden className="veil pointer-events-none fixed inset-0 z-50">
+        <div className="veil-top absolute inset-x-0 top-0 h-1/2 bg-ink" />
+        <div className="veil-bot absolute inset-x-0 bottom-0 h-1/2 bg-ink" />
+        <div className="veil-line absolute left-0 top-1/2 h-px w-full bg-paper" />
+      </div>
       {/* NAV — a long low beam cantilevered from the right edge; logo overhangs its free end */}
       <header className="relative h-28">
         <div className="absolute right-0 top-8 flex h-12 w-[72%] items-center justify-end gap-8 rounded-l-full border border-graphite/60 bg-graphite/15 pr-10">
           {[1, 2, 3, 4].map((i) => <div key={i} className="h-2 w-14 rounded-full bg-graphite/50" />)}
-          <div className="h-8 w-28 rounded-full bg-ink" />
+          <button
+            type="button"
+            aria-label="Switch between day and night"
+            aria-pressed={night}
+            onClick={() => setNight((n) => !n)}
+            className="relative h-8 w-28 rounded-full bg-ink"
+          >
+            <span className={`absolute top-1 h-6 w-6 rounded-full bg-paper transition-all duration-700 ${night ? "left-[5.25rem]" : "left-1"}`} />
+          </button>
         </div>
         <div className="absolute left-[22%] top-4 h-20 w-20 overflow-hidden rounded-full frame">
           <Plate src={observer.url} pos="55% 28%" className="scale-[2.2]" />
@@ -55,7 +115,7 @@ function Index() {
       </header>
 
       {/* HERO — panoramic slab sitting low on a tilted horizon; headline hangs off the top-left, CTA pierces the right edge */}
-      <section className="relative h-[88vh]">
+      <section className="horizon relative h-[88vh]">
         <div className="absolute left-[6%] top-[14%] w-[44%] -rotate-[2deg]">
           <div className="space-y-3">
             <div className="h-10 w-full bg-ink" />
@@ -65,7 +125,7 @@ function Index() {
           <Lines n={3} className="ml-[36%] mt-8 w-[50%]" />
         </div>
         <div className="absolute bottom-[10%] left-[-4%] h-[42%] w-[96%] -rotate-[2deg] overflow-hidden rounded-tr-[12rem] frame">
-          <Plate src={singularity.url} pos="50% 62%" className="scale-110 drift" />
+          <Plate src={singularity.url} pos="50% 62%" className="scale-110 drift" depth={2.5} />
         </div>
         <Pill className="absolute bottom-[34%] right-[2%] w-56 -rotate-[2deg]" />
         <div className="absolute bottom-[4%] left-0 h-px w-full -rotate-[2deg] bg-ink" />
@@ -88,6 +148,29 @@ function Index() {
               <Lines n={3} className="min-w-0 flex-1" />
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* CORRIDOR — pinned while six cantilevered slivers slide past (feature 15) */}
+      <section ref={strip} className="relative h-[320vh]">
+        <div className="sticky top-0 h-screen overflow-hidden">
+          <div className="absolute left-0 top-[62%] h-px w-full bg-ink" />
+          <div className="corridor absolute left-[10vw] top-0 flex h-full items-center gap-[8vw]">
+            {[singularity, waves, oracle, observer, orders, turning].map((img, i) => (
+              <div
+                key={i}
+                className="relative w-[26vw] shrink-0 overflow-hidden frame"
+                style={{
+                  height: `${[58, 34, 46, 70, 40, 52][i]}vh`,
+                  transform: `translateY(${[-8, 10, -14, 0, 14, -4][i]}vh) skewY(${i % 2 ? 4 : -4}deg)`,
+                  borderTopLeftRadius: i % 3 === 0 ? "10rem" : 0,
+                  borderBottomRightRadius: i % 3 === 1 ? "10rem" : 0,
+                }}
+              >
+                <Plate src={img.url} pos={["50% 60%", "35% 40%", "28% 40%", "50% 30%", "40% 45%", "45% 40%"][i]!} className="scale-[1.6]" depth={1 + i * 0.4} />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
