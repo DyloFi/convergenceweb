@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import singularity from "@/assets/singularity.jpg.asset.json";
 import oracle from "@/assets/oracle.webp.asset.json";
 import waves from "@/assets/waves.webp.asset.json";
@@ -13,7 +13,7 @@ const Plate = ({ src, pos = "center", className = "", depth = 1 }: { src: string
 );
 
 /* Cursor (momentum) + scroll signals written to CSS vars — feature 12 & 14 */
-function useFieldSignals(root: React.RefObject<HTMLElement | null>, strip: React.RefObject<HTMLElement | null>) {
+function useFieldSignals(root: RefObject<HTMLElement | null>, strip: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const el = root.current;
     if (!el) return;
