@@ -162,5 +162,5 @@ body{font-family:var(--font-sans);}
 @utility plate{mix-blend-mode:multiply;filter:grayscale(1) contrast(1.25) brightness(1.05);}
 @keyframes drift{from{transform:scale(1.1) translateX(0)}to{transform:scale(1.18) translateX(-3%)}}
 @utility drift{animation:drift 40s ease-in-out infinite alternate;}
-@keyframes slowspin{to{transform:scale(1.25) rotate(360deg)}}
+@keyframes slowspin{from{transform:scale(1.8) rotate(0)}to{transform:scale(1.8) rotate(360deg)}}
 @utility slow-spin{animation:slowspin 180s linear infinite;}
