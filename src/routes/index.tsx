@@ -49,7 +49,7 @@ function Index() {
           {[1, 2, 3, 4].map((i) => <div key={i} className="h-2 w-14 rounded-full bg-graphite/50" />)}
           <div className="h-8 w-28 rounded-full bg-ink" />
         </div>
-        <div className="absolute left-[22%] top-4 h-20 w-20 overflow-hidden rounded-full border border-graphite/60">
+        <div className="absolute left-[22%] top-4 h-20 w-20 overflow-hidden rounded-full frame">
           <Plate src={observer.url} pos="55% 28%" className="scale-[2.2]" />
         </div>
       </header>
@@ -64,7 +64,7 @@ function Index() {
           </div>
           <Lines n={3} className="ml-[36%] mt-8 w-[50%]" />
         </div>
-        <div className="absolute bottom-[10%] left-[-4%] h-[42%] w-[96%] -rotate-[2deg] overflow-hidden rounded-tr-[12rem] border border-graphite/60">
+        <div className="absolute bottom-[10%] left-[-4%] h-[42%] w-[96%] -rotate-[2deg] overflow-hidden rounded-tr-[12rem] frame">
           <Plate src={singularity.url} pos="50% 62%" className="scale-110 drift" />
         </div>
         <Pill className="absolute bottom-[34%] right-[2%] w-56 -rotate-[2deg]" />
@@ -72,16 +72,16 @@ function Index() {
       </section>
 
       {/* FEATURES — three long, low cards stepped out like cantilevered floors */}
-      <section className="relative mx-auto max-w-7xl px-6 py-28">
+      <section className="relative mx-auto max-w-7xl px-6 py-40">
         <Lines n={2} className="mb-16 ml-auto w-64" />
-        <div className="space-y-6 [perspective:1400px]">
+        <div className="space-y-14 [perspective:1400px]">
           {[0, 1, 2].map((i) => (
             <div
               key={i}
-              className="flex h-44 items-center gap-8 overflow-hidden border border-graphite/60 bg-graphite/15 px-8 [transform:rotateY(-14deg)]"
+              className="flex h-44 items-center gap-10 overflow-hidden border border-ink/80 bg-graphite/10 pl-0 pr-10 [transform:rotateY(-14deg)]"
               style={{ marginLeft: `${i * 14}%`, width: `${62 - i * 6}%` }}
             >
-              <div className="relative h-full w-[45%] shrink-0 overflow-hidden border-x border-graphite/60">
+              <div className="relative h-full w-[45%] shrink-0 overflow-hidden frame-x">
                 <Plate src={[waves.url, oracle.url, turning.url][i]!} pos={["30% 35%", "25% 35%", "45% 40%"][i]!} className="scale-150" />
               </div>
               <div className="h-16 w-16 shrink-0 rounded-full bg-ink" />
@@ -92,13 +92,13 @@ function Index() {
       </section>
 
       {/* SHOWCASE — sunken circular testimonial bowl beside a wide picture-window panel */}
-      <section className="relative grid h-[90vh] grid-cols-12 gap-6 px-6">
-        <div className="relative col-span-12 h-[55vh] self-start overflow-hidden border border-graphite/60 md:col-span-8 md:mt-10">
+      <section className="relative grid h-[100vh] grid-cols-12 gap-10 px-10">
+        <div className="relative col-span-12 h-[55vh] self-start overflow-hidden frame md:col-span-8 md:mt-10">
           <Plate src={orders.url} pos="40% 40%" className="scale-[1.6]" />
         </div>
         <div className="relative col-span-12 md:col-span-4">
           <div className="absolute -left-[45%] top-[40%] grid aspect-square w-[130%] place-items-center rounded-full border border-graphite/60 bg-graphite/10">
-            <div className="relative grid aspect-square w-[72%] place-items-center overflow-hidden rounded-full border border-graphite/60 bg-graphite/15">
+            <div className="relative grid aspect-square w-[72%] place-items-center overflow-hidden rounded-full frame bg-graphite/15">
               <Plate src={observer.url} pos="50% 30%" className="scale-125 slow-spin" />
             </div>
           </div>
@@ -115,7 +115,7 @@ function Index() {
 
       {/* FOOTER — heavy ground slab; one column cantilevers up and out over the void */}
       <footer className="relative mt-24 h-64 bg-ink">
-        <div className="absolute -top-24 left-[8%] h-40 w-[34%] overflow-hidden border border-graphite/60 bg-paper">
+        <div className="absolute -top-24 left-[8%] h-40 w-[34%] overflow-hidden frame bg-paper">
           <Plate src={singularity.url} pos="0% 85%" className="scale-[1.8] origin-bottom-left" />
         </div>
         <div className="absolute bottom-10 right-8 flex gap-16">
