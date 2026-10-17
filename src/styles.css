@@ -158,3 +158,9 @@ body{font-family:var(--font-sans);}
 @utility floor-grid{background-image:repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 80px),repeating-linear-gradient(0deg,var(--ink) 0 1px,transparent 1px 80px);}
 @utility speed-lines{background-image:repeating-linear-gradient(0deg,var(--ink) 0 2px,transparent 2px 14px);}
 @utility rings{background:repeating-radial-gradient(circle,var(--ink) 0 2px,transparent 2px 36px);}
+
+@utility plate{mix-blend-mode:multiply;filter:grayscale(1) contrast(1.25) brightness(1.05);}
+@keyframes drift{from{transform:scale(1.1) translateX(0)}to{transform:scale(1.18) translateX(-3%)}}
+@utility drift{animation:drift 40s ease-in-out infinite alternate;}
+@keyframes slowspin{from{transform:scale(1.8) rotate(0)}to{transform:scale(1.8) rotate(360deg)}}
+@utility slow-spin{animation:slowspin 180s linear infinite;}
