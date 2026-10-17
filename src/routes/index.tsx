@@ -83,7 +83,7 @@ function Index() {
     <main
       ref={root}
       aria-label="Wireframe layout study"
-      className={`field min-h-screen overflow-x-hidden bg-paper pb-0 ${night ? "night" : ""} ${xray ? "xray" : ""}`}
+      className={`field min-h-screen overflow-x-clip bg-paper pb-0 ${night ? "night" : ""} ${xray ? "xray" : ""}`}
       /* hidden gesture (feature 8): press and hold anywhere to see through the plates */
       onPointerDown={() => { hold.current = window.setTimeout(() => setXray(true), 700); }}
       onPointerUp={() => { clearTimeout(hold.current); setXray(false); }}
