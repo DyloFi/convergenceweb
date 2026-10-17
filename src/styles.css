@@ -166,5 +166,5 @@ body{font-family:var(--font-sans);}
 @utility slow-spin{animation:slowspin 180s linear infinite;}
 
 /* Frames: ink hairline + detached ghost outline, inner void vignette */
-@utility frame{border:1px solid var(--ink);outline:1px solid color-mix(in oklab,var(--ink) 25%,transparent);outline-offset:7px;box-shadow:inset 0 0 60px 10px color-mix(in oklab,var(--ink) 35%,transparent),0 30px 60px -30px color-mix(in oklab,var(--ink) 50%,transparent);}
-@utility frame-x{border-inline:1px solid var(--ink);box-shadow:inset 0 0 40px 6px color-mix(in oklab,var(--ink) 40%,transparent);}
+@utility frame{border:1px solid var(--ink);outline:1px solid color-mix(in oklab,var(--ink) 25%,transparent);outline-offset:7px;box-shadow:0 30px 60px -30px color-mix(in oklab,var(--ink) 50%,transparent);&::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 70px 14px color-mix(in oklab,var(--ink) 45%,transparent);}}
+@utility frame-x{border-inline:1px solid var(--ink);&::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 40px 8px color-mix(in oklab,var(--ink) 45%,transparent);}}
