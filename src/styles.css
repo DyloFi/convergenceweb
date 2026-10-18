@@ -185,3 +185,60 @@ body{font-family:var(--font-sans);}
 @keyframes veilBot{to{transform:translateY(100%)}}
 @keyframes veilGone{to{visibility:hidden}}
 @media (prefers-reduced-motion:reduce){.veil{display:none}.parallax{translate:none}.horizon{transform:none}}
+
+/* Wordless instruments: all strokes inherit the paper/ink system. */
+.instrument-nav { z-index: 30; gap: 1.25rem; }
+.instrument-control { flex-shrink: 0; color: var(--ink); border: 1px solid transparent; border-radius: 0; background: transparent; }
+.instrument-control:hover, .instrument-control[aria-pressed="true"] { background: color-mix(in oklab,var(--graphite) 20%,transparent); border-color: var(--ink); }
+.instrument-control svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 1; }
+.instrument-control:focus-visible, .radar-level:focus-visible, .day-night-control:focus-visible { outline: 1px solid var(--ink); outline-offset: 5px; box-shadow: none; }
+.day-night-control:hover { background: var(--ink); }
+.elevation-radar { position: fixed; right: 10px; top: 35%; width: 64px; height: 280px; z-index: 40; color: var(--ink); background: color-mix(in oklab,var(--paper) 78%,transparent); }
+.elevation-section { position: absolute; inset: 0; width: 100%; height: 100%; stroke: currentColor; stroke-width: 0.75; }
+.radar-projection { opacity: .25; stroke-dasharray: 2 4; }
+.radar-level { position: absolute; left: 0; width: 64px; height: 36px; translate: 0 -50%; border-radius: 0; background: transparent; }
+.radar-level:hover { background: color-mix(in oklab,var(--graphite) 20%,transparent); }
+.radar-level span { position: absolute; right: 12px; width: 5px; height: 5px; border: 1px solid var(--ink); rotate: 45deg; background: var(--paper); }
+.elevation-reticle { position: absolute; left: 1px; top: calc(5% + var(--elevation,0) * 90%); width: 59px; height: 12px; translate: 0 -50%; border-block: 1px solid var(--ink); pointer-events: none; }
+.elevation-reticle::before { content: ""; position: absolute; right: 10px; top: -4px; width: 18px; height: 18px; border: 1px solid var(--ink); border-radius: 50%; }
+.diagram-viewport { isolation: isolate; }
+.diagram-loupe { position: absolute; z-index: 4; width: 128px; height: 128px; translate: -50% -50%; border: 1px solid var(--ink); border-radius: 50%; outline: 1px solid color-mix(in oklab,var(--ink) 35%,transparent); outline-offset: 6px; overflow: hidden; background: var(--paper); pointer-events: none; }
+.loupe-optics { position: absolute; }
+.loupe-optics .plate { animation: none; }
+.loupe-crosshair { position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 9px color-mix(in oklab,var(--paper) 45%,transparent); }
+.loupe-crosshair::before, .loupe-crosshair::after { content: ""; position: absolute; background: var(--ink); opacity: .6; }
+.loupe-crosshair::before { top: 50%; left: 0; width: 100%; height: 1px; }
+.loupe-crosshair::after { left: 50%; top: 0; height: 100%; width: 1px; }
+.solar-louvers { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(9,1fr); perspective: 700px; pointer-events: none; z-index: 2; }
+.solar-louvers i { border-left: 1px solid color-mix(in oklab,var(--ink) 42%,transparent); background: color-mix(in oklab,var(--paper) 12%,transparent); transform-origin: left center; transform: rotateY(clamp(0deg, calc((var(--open,0) * 1.6 - var(--fin) * .075) * 78deg), 78deg)) rotateZ(calc(var(--open,0) * (var(--fin) - 4) * .65deg)); }
+.drafting-overlay { opacity: 0; transition: opacity .7s ease; color: var(--ink); }
+.drafting .drafting-overlay { opacity: 1; }
+.drafting-overlay svg { width: 100%; height: 100%; stroke: currentColor; stroke-width: .65; }
+.perspective-rays { opacity: .22; transform: translate(calc(var(--mx,0) * 35px),calc(var(--my,0) * 25px + var(--sy,0) * -20px)); }
+.dimension-guides { opacity: .4; }
+.drafting .frame, .drafting .frame-x { outline-color: var(--ink); }
+@media (max-width: 767px) {
+  .instrument-nav { width: 82%; padding-right: 1rem; gap: .6rem; }
+  .instrument-nav > div { display: none; }
+  .day-night-control { width: 7rem; }
+  .elevation-radar { right: 3px; width: 48px; }
+  .elevation-section { width: 48px; }
+  .radar-level { width: 48px; min-height: 44px; }
+  .elevation-reticle { width: 44px; }
+  .terraces { padding-block: 6rem; padding-right: 3rem; }
+  .terraces > div > div { width: 86% !important; gap: 1rem; padding-right: 1rem; height: 9rem; }
+  .terraces > div > div > .rounded-full { width: 2rem; height: 2rem; }
+  .corridor > .frame { width: 55vw; }
+  .bowl-section { padding-inline: 1.5rem; grid-template-rows: 55vh 40vh; gap: 0; }
+  .bowl-section > div:last-child > div { width: 66%; left: 20%; top: -10%; }
+  .arrival-section > div { width: 74%; right: 16%; padding-left: 1.5rem; height: 6rem; }
+  .arrival-section > div > .rounded-full { width: 4rem; height: 4rem; }
+  #void > div:last-child { gap: 1.5rem; right: 3.5rem; }
+  #void > div:last-child > div { width: 3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .drift, .slow-spin { animation: none; }
+  .drafting-overlay, .field { transition: none; }
+  .perspective-rays { transform: none; }
+  .solar-louvers i { transform: rotateY(78deg); }
+}
