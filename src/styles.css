@@ -220,6 +220,7 @@ body{font-family:var(--font-sans);}
 @media (max-width: 767px) {
   .instrument-nav { width: 82%; padding-right: 1rem; gap: .6rem; }
   .instrument-nav > div { display: none; }
+  .field > header > .frame { left: 4%; }
   .day-night-control { width: 7rem; }
   .elevation-radar { right: 3px; width: 48px; }
   .elevation-section { width: 48px; }
