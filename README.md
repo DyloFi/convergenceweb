@@ -1,14 +1,18 @@
-# Welcome to your Lovable project
+# Chrome Dusk Visions
+
+Can you do a quick mockup of what’s website would oook like if it took all design queues from a combination of Syd Mead and Charles Schridde? Not just the art but their overall design philosophy. Weird and unusual perspectives, asymmetrical and all things alike.
 
 This project was built with [Lovable](https://lovable.dev).
 
+**Live app**: https://chrome-dusk-visions.lovable.app
+
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/5ff133d2-aab2-429c-9db2-a9e274753fd1).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +24,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
