@@ -31,7 +31,10 @@ export function DiagramPlate({ src, pos = "center", className = "", depth = 1 }:
 
 export function ElevationRadar({ servo }: { servo: () => void }) {
   return <nav aria-label="Spatial elevation navigation" className="elevation-radar">
-    <span aria-hidden="true" className="elevation-datum" />
+    <svg aria-hidden="true" className="elevation-section" viewBox="0 0 64 280" preserveAspectRatio="none" fill="none">
+      <path d="M48 6V274M48 14H10V26H38V62H18V74H32V110H6V122H38V158H22V170H36V206H12V218H44V266H4" />
+      <path className="radar-projection" d="M4 14H60M4 62H60M4 110H60M4 158H60M4 206H60M4 266H60" />
+    </svg>
     <span aria-hidden="true" className="elevation-reticle" />
     {FIELD_LEVELS.map((level, i) => <Button key={level.id} variant="ghost" size="icon" className="radar-level" aria-label={`Navigate to ${level.label}`} style={{ top: `${5 + i * 18}%` }} onClick={() => {
       servo();
