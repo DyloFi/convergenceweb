@@ -12,9 +12,12 @@ export const FIELD_LEVELS = [
 export function elevationPosition(scroll: number, tops: number[]) {
   if (tops.length < 2) return 0;
   for (let i = 0; i < tops.length - 1; i++) {
-    if (scroll <= tops[i + 1]) {
-      const distance = tops[i + 1] - tops[i];
-      return (i + Math.max(0, Math.min(1, (scroll - tops[i]) / Math.max(1, distance)))) / (tops.length - 1);
+    const start = tops[i];
+    const end = tops[i + 1];
+    if (start === undefined || end === undefined) continue;
+    if (scroll <= end) {
+      const distance = end - start;
+      return (i + Math.max(0, Math.min(1, (scroll - start) / Math.max(1, distance)))) / (tops.length - 1);
     }
   }
   return 1;
