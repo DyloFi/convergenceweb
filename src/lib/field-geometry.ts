@@ -11,6 +11,8 @@ export const FIELD_LEVELS = [
 
 export function elevationPosition(scroll: number, tops: number[]) {
   if (tops.length < 2) return 0;
+  const last = tops.at(-1);
+  if (last !== undefined && scroll >= last) return 1;
   for (let i = 0; i < tops.length - 1; i++) {
     const start = tops[i];
     const end = tops[i + 1];

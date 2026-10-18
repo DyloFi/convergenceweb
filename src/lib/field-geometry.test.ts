@@ -8,6 +8,7 @@ describe("field instruments", () => {
     expect(elevationPosition(750, [0, 500, 1000])).toBe(0.75);
     expect(elevationPosition(-100, [0, 500, 1000])).toBe(0);
     expect(elevationPosition(2000, [0, 500, 1000])).toBe(1);
+    expect(elevationPosition(1000, [0, 500, 1000, 1000])).toBe(1);
   });
   it("opens louvers progressively as a viewport enters the screen", () => {
     expect(louverProgress(1000, 400, 1000)).toBe(0);
