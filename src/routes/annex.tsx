@@ -207,20 +207,20 @@ function Annex() {
       {/* CONTACT SHEET — the remaining drawings laid out on a broken grid, nothing aligned twice */}
       <section className="px-[6vw] py-32">
         <div className="grid grid-cols-12 items-start gap-8">
-          <div className="col-span-6 mt-16 aspect-[4/3] overflow-hidden frame">
+          <div className="relative col-span-6 mt-16 aspect-[4/3] overflow-hidden frame">
             <Plate src={singularity.url} pos="50% 60%" className="scale-[1.5]" depth={1.2} />
           </div>
-          <div className="col-span-4 aspect-[3/4] overflow-hidden rounded-tr-[8rem] frame">
+          <div className="relative col-span-4 aspect-[3/4] overflow-hidden rounded-tr-[8rem] frame">
             <Plate src={orders.url} pos="40% 40%" className="scale-[1.7]" depth={1.8} />
           </div>
           <div className="col-span-2">
             <Box className="aspect-square" />
             <Lines n={3} className="mt-6" />
           </div>
-          <div className="col-span-3 aspect-square overflow-hidden rounded-bl-[8rem] frame">
+          <div className="relative col-span-3 aspect-square overflow-hidden rounded-bl-[8rem] frame">
             <Plate src={waves.url} pos="35% 45%" className="scale-[1.8]" depth={1.5} />
           </div>
-          <div className="col-span-5 mt-24 aspect-[16/9] overflow-hidden frame">
+          <div className="relative col-span-5 mt-24 aspect-[16/9] overflow-hidden frame">
             <Plate src={oracle.url} pos="55% 35%" className="scale-[1.6]" depth={2} />
           </div>
           <div className="col-span-4 mt-8 space-y-8">
