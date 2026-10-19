@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnnexRouteImport } from './routes/annex'
-import { Route as ChromaticRouteImport } from './routes/chromatic'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,40 +22,31 @@ const AnnexRoute = AnnexRouteImport.update({
   path: '/annex',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ChromaticRoute = ChromaticRouteImport.update({
-  id: '/chromatic',
-  path: '/chromatic',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/annex': typeof AnnexRoute
-  '/chromatic': typeof ChromaticRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/annex': typeof AnnexRoute
-  '/chromatic': typeof ChromaticRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/annex': typeof AnnexRoute
-  '/chromatic': typeof ChromaticRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/annex' | '/chromatic'
+  fullPaths: '/' | '/annex'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/annex' | '/chromatic'
-  id: '__root__' | '/' | '/annex' | '/chromatic'
+  to: '/' | '/annex'
+  id: '__root__' | '/' | '/annex'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnnexRoute: typeof AnnexRoute
-  ChromaticRoute: typeof ChromaticRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,20 +65,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AnnexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chromatic': {
-      id: '/chromatic'
-      path: '/chromatic'
-      fullPath: '/chromatic'
-      preLoaderRoute: typeof ChromaticRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnnexRoute: AnnexRoute,
-  ChromaticRoute: ChromaticRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
