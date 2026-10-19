@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnnexRouteImport } from './routes/annex'
 import { Route as ChromaticRouteImport } from './routes/chromatic'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnnexRoute = AnnexRouteImport.update({
+  id: '/annex',
+  path: '/annex',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChromaticRoute = ChromaticRouteImport.update({
@@ -25,27 +31,31 @@ const ChromaticRoute = ChromaticRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/annex': typeof AnnexRoute
   '/chromatic': typeof ChromaticRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/annex': typeof AnnexRoute
   '/chromatic': typeof ChromaticRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/annex': typeof AnnexRoute
   '/chromatic': typeof ChromaticRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/chromatic'
+  fullPaths: '/' | '/annex' | '/chromatic'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/chromatic'
-  id: '__root__' | '/' | '/chromatic'
+  to: '/' | '/annex' | '/chromatic'
+  id: '__root__' | '/' | '/annex' | '/chromatic'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnnexRoute: typeof AnnexRoute
   ChromaticRoute: typeof ChromaticRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/annex': {
+      id: '/annex'
+      path: '/annex'
+      fullPath: '/annex'
+      preLoaderRoute: typeof AnnexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/chromatic': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnnexRoute: AnnexRoute,
   ChromaticRoute: ChromaticRoute,
 }
 export const routeTree = rootRouteImport
