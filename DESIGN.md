@@ -21,7 +21,6 @@ A site designed through the philosophy of Syd Mead and Charles Schridde: strange
 - No colour: off-white paper, black and grey.
 - No words: Lines, Pill and Box bars stand in for text.
 - Only the six existing drawings.
-- /chromatic stays archived and separate.
 - These restraints were a method for finding the feel. They are not the feel itself.
 
 ### When content arrives
