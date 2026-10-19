@@ -54,3 +54,5 @@ Every exploration must differ from the others in horizon, nav and footer anatomy
 
 ## 6. Before merging any change
 Recapture each page headless at 0, 25, 50, 75 and 100 percent scroll, plus night mode. Compare the reference against baseline-2026-10-18 and the explorations against it and each other. Work on a branch, never straight to main.
+
+Visual reference: docs/baseline/ holds screenshots of the approved baseline. Check new pages against them and LOVABLE_SPEC.md.

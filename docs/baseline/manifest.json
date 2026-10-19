@@ -1,0 +1,84 @@
+{
+ "url": "https://convergenceweb.lovable.app/",
+ "taken": "2026-10-18T07:14:35.558Z",
+ "shots": [
+  {
+   "file": "desktop_day_000.png",
+   "pageHeight": 6534,
+   "scrollY": 0,
+   "errors": 0
+  },
+  {
+   "file": "desktop_day_025.png",
+   "pageHeight": 6534,
+   "scrollY": 1409,
+   "errors": 0
+  },
+  {
+   "file": "desktop_day_050.png",
+   "pageHeight": 6534,
+   "scrollY": 2817,
+   "errors": 0
+  },
+  {
+   "file": "desktop_day_075.png",
+   "pageHeight": 6534,
+   "scrollY": 4226,
+   "errors": 0
+  },
+  {
+   "file": "desktop_day_100.png",
+   "pageHeight": 6534,
+   "scrollY": 5634,
+   "errors": 0
+  },
+  {
+   "file": "desktop_night_000.png",
+   "pageHeight": 6534,
+   "scrollY": 0,
+   "errors": 0
+  },
+  {
+   "file": "desktop_night_025.png",
+   "pageHeight": 6534,
+   "scrollY": 1409,
+   "errors": 0
+  },
+  {
+   "file": "desktop_night_050.png",
+   "pageHeight": 6534,
+   "scrollY": 2817,
+   "errors": 0
+  },
+  {
+   "file": "desktop_night_075.png",
+   "pageHeight": 6534,
+   "scrollY": 4226,
+   "errors": 0
+  },
+  {
+   "file": "desktop_night_100.png",
+   "pageHeight": 6534,
+   "scrollY": 5634,
+   "errors": 0
+  },
+  {
+   "file": "mobile_day_000.png",
+   "pageHeight": 6222,
+   "scrollY": 0,
+   "errors": 0
+  },
+  {
+   "file": "mobile_day_050.png",
+   "pageHeight": 6222,
+   "scrollY": 2689,
+   "errors": 0
+  },
+  {
+   "file": "mobile_day_100.png",
+   "pageHeight": 6222,
+   "scrollY": 5378,
+   "errors": 0
+  }
+ ]
+}
