@@ -1,5 +1,7 @@
 # DESIGN.md: Convergence
 
+> **Source of truth:** `LOVABLE_SPEC.md` is the owner's Lovable knowledge doc and outranks everything below. Where this file and it disagree, follow it. Notably: avoid bilateral symmetry on every page, tilt horizons -2° to -5°, and use no colour at all.
+
 Read this before changing anything. If a change breaks a rule here, don't make it.
 
 ## 1. Shared core (applies to every page, never changes)

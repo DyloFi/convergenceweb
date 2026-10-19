@@ -14,3 +14,5 @@
 Read DESIGN.md before changing anything in this repo. If a change breaks a rule in DESIGN.md, do not make it.
 
 Work on a branch, never straight to main. The tag baseline-2026-10-18 is the owner recovery point for the reference page.
+
+Design source of truth: read `LOVABLE_SPEC.md` first. It outranks DESIGN.md where they differ.
