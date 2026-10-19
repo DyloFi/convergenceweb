@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type RefObject } from "react";
 import singularity from "@/assets/singularity.jpg.asset.json";
 import oracle from "@/assets/oracle.webp.asset.json";
