@@ -157,10 +157,10 @@ function Annex() {
             {[0, 1, 2, 3].map((i) => (
               <div key={i} className="relative" style={{ marginLeft: `${i * 8}%` }}>
                 <div className="absolute -left-8 top-1/2 h-px w-8 bg-ink/70" />
-                <Box className="flex items-center gap-6 p-5">
+                <div className="flex items-center gap-6 border border-graphite/60 bg-graphite/15 p-5">
                   <div className="h-10 w-10 shrink-0 rounded-full border border-ink" style={{ background: i % 2 ? "transparent" : "var(--ink)" }} />
                   <Lines n={2} className="min-w-0 flex-1" />
-                </Box>
+                </div>
               </div>
             ))}
           </div>
