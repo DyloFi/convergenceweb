@@ -22,4 +22,12 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).toBe("/annex");
   });
+
+  it("matches the atrium page for /atrium instead of falling back to not found", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+
+    const matches = router.matchRoutes("/atrium");
+
+    expect(matches.at(-1)?.routeId).toBe("/atrium");
+  });
 });
