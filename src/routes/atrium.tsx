@@ -150,7 +150,7 @@ function Atrium() {
         <div className="grid h-[105vh] grid-cols-3 gap-[7%]">
           <div className="relative mt-[8vh]">
             <div className="relative h-72 overflow-hidden rounded-tr-[9rem] frame">
-              <Plate src={waves.url} pos="30% 42%" className="scale-[1.5]" depth={1.4} />
+              <Plate src={waves.url} pos="20% 45%" className="scale-[2]" depth={1.4} />
             </div>
             <div className="mx-auto h-[30vh] w-px bg-ink" />
             <div className="mx-auto h-1.5 w-24 bg-ink" />
