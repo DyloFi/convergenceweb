@@ -106,7 +106,7 @@ function Annex() {
             className="h-2 w-20 rounded-full bg-ink transition-transform hover:translate-x-2"
           />
           <div className="h-2 w-14 rounded-full bg-graphite/50" />
-          <div className="h-2 w-10 rounded-full bg-graphite/50" />
+          <Link to="/atrium" aria-label="The Atrium" className="h-2 w-10 rounded-full bg-graphite/50 transition-transform hover:-translate-y-1" />
           <button
             type="button"
             aria-label="Switch between day and night"

@@ -100,7 +100,7 @@ function Index() {
         <div className="absolute right-0 top-8 flex h-12 w-[72%] items-center justify-end gap-8 rounded-l-full border border-graphite/60 bg-graphite/15 pr-10">
           <Link to="/" aria-label="Main layout study" className="h-2 w-20 rounded-full bg-ink" />
           <Link to="/annex" aria-label="The Annex" className="h-2 w-14 rounded-full bg-graphite/50 transition-transform hover:-translate-y-1" />
-          <span aria-hidden className="h-2 w-10 rounded-full bg-graphite/50" />
+          <Link to="/atrium" aria-label="The Atrium" className="h-2 w-10 rounded-full bg-graphite/50 transition-transform hover:-translate-y-1" />
           <div className="h-2 w-8 rounded-full bg-graphite/50" />
           <button
             type="button"
