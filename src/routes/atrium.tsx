@@ -129,7 +129,7 @@ function Atrium() {
           style={{ outline: "1px solid color-mix(in oklab, var(--ink) 25%, transparent)", outlineOffset: "26px" }}
         />
         <div className="absolute bottom-[18%] left-[28%] aspect-square w-[38vh] overflow-hidden rounded-t-full frame">
-          <Plate src={turning.url} pos="50% 58%" className="scale-[1.7] drift" depth={2.2} />
+          <Plate src={turning.url} pos="36% 46%" className="scale-[2.2] drift" depth={2.2} />
         </div>
         <div className="absolute right-[8%] top-[20%] w-[38%] rotate-[3deg]">
           <div className="space-y-3">
@@ -183,7 +183,7 @@ function Atrium() {
         </div>
         {[
           { img: oracle.url, left: "6%", top: "14%", w: "26%", ar: "aspect-[4/3]", r: "rounded-tr-[8rem]", pos: "30% 35%", s: "scale-[1.6]", d: 1.3 },
-          { img: waves.url, left: "52%", top: "34%", w: "30%", ar: "aspect-[16/9]", r: "rounded-bl-[8rem]", pos: "35% 45%", s: "scale-[1.6]", d: 1.7 },
+          { img: waves.url, left: "52%", top: "34%", w: "30%", ar: "aspect-[16/9]", r: "rounded-bl-[8rem]", pos: "28% 48%", s: "scale-[1.9]", d: 1.7 },
           { img: singularity.url, left: "18%", top: "58%", w: "34%", ar: "aspect-[3/4]", r: "rounded-tr-[10rem]", pos: "50% 55%", s: "scale-[1.5]", d: 2.1 },
         ].map((l, i) => (
           <div key={i} className={`absolute overflow-hidden frame ${l.r} ${l.ar}`} style={{ left: l.left, top: l.top, width: l.w }}>
@@ -199,7 +199,7 @@ function Atrium() {
           {[
             { img: orders.url, w: "w-[34vw]", h: "h-[54vh]", pos: "40% 45%", s: "scale-[1.7]", d: 1.5 },
             { img: turning.url, w: "w-[24vw]", h: "h-[40vh]", pos: "50% 42%", s: "scale-[1.5]", d: 1.9 },
-            { img: observer.url, w: "w-[16vw]", h: "h-[28vh]", pos: "50% 26%", s: "scale-[1.6]", d: 2.3 },
+            { img: observer.url, w: "w-[16vw]", h: "h-[28vh]", pos: "50% 10%", s: "scale-[2]", d: 2.3 },
           ].map((a, i) => (
             <div key={i} className={`relative shrink-0 overflow-hidden rounded-t-full frame ${a.w} ${a.h}`}>
               <Plate src={a.img} pos={a.pos} className={a.s} depth={a.d} />
@@ -224,7 +224,7 @@ function Atrium() {
         <Box className="absolute bottom-[8%] left-[14%] h-20 w-56" />
       </section>
 
-      {/* FOOTER — a heavy dark slab from which pale pylons rise into the void, each carrying one small floating box */}
+      {/* FOOTER — a heavy dark slab from which slender ink pylons rise into the void, each carrying one small pale floating box */}
       <footer className="relative mt-32 h-64 bg-ink">
         {[
           { left: "12%", h: "h-40" },
@@ -234,7 +234,7 @@ function Atrium() {
         ].map((p, i) => (
           <div key={i} className="absolute bottom-full flex flex-col items-center" style={{ left: p.left }}>
             <div className="mb-2 h-10 w-16 border border-ink bg-paper" />
-            <div aria-hidden className={`w-px bg-paper ${p.h}`} />
+            <div aria-hidden className={`w-px bg-ink ${p.h}`} />
           </div>
         ))}
         <div className="absolute bottom-10 left-8 flex gap-16">
