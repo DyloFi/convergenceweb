@@ -183,8 +183,8 @@ function Atrium() {
         </div>
         {[
           { img: oracle.url, left: "6%", top: "14%", w: "26%", ar: "aspect-[4/3]", r: "rounded-tr-[8rem]", pos: "30% 35%", s: "scale-[1.6]", d: 1.3 },
-          { img: waves.url, left: "52%", top: "34%", w: "30%", ar: "aspect-[16/9]", r: "rounded-bl-[8rem]", pos: "20% 58%", s: "scale-[2.3]", d: 1.7 },
-          { img: singularity.url, left: "18%", top: "58%", w: "34%", ar: "aspect-[3/4]", r: "rounded-tr-[10rem]", pos: "50% 55%", s: "scale-[1.5]", d: 2.1 },
+          { img: waves.url, left: "52%", top: "34%", w: "30%", ar: "aspect-[16/9]", r: "rounded-bl-[8rem]", pos: "18% 62%", s: "scale-[2.8]", d: 1.7 },
+          { img: singularity.url, left: "18%", top: "58%", w: "34%", ar: "aspect-[3/4]", r: "rounded-tr-[10rem]", pos: "40% 60%", s: "scale-[2.2]", d: 2.1 },
         ].map((l, i) => (
           <div key={i} className={`absolute overflow-hidden frame ${l.r} ${l.ar}`} style={{ left: l.left, top: l.top, width: l.w }}>
             <Plate src={l.img} pos={l.pos} className={l.s} depth={l.d} />
