@@ -164,7 +164,7 @@ function Atrium() {
           </div>
           <div className="relative mt-[2vh]">
             <div className="relative h-80 overflow-hidden rounded-tl-[9rem] frame">
-              <Plate src={observer.url} pos="50% 20%" className="scale-[1.4]" depth={2.3} />
+              <Plate src={observer.url} pos="42% 20%" className="scale-[1.8]" depth={2.3} />
             </div>
             <div className="mx-auto h-[24vh] w-px bg-ink" />
             <div className="mx-auto h-1.5 w-24 bg-ink" />
