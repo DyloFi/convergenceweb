@@ -30,4 +30,9 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).toBe("/atrium");
   });
+
+  it("matches the causeway page for /causeway", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    expect(router.matchRoutes("/causeway").at(-1)?.routeId).toBe("/causeway");
+  });
 });
