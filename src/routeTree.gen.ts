@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnnexRouteImport } from './routes/annex'
 import { Route as AtriumRouteImport } from './routes/atrium'
 import { Route as CausewayRouteImport } from './routes/causeway'
+import { Route as SpireRouteImport } from './routes/spire'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const CausewayRoute = CausewayRouteImport.update({
   path: '/causeway',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SpireRoute = SpireRouteImport.update({
+  id: '/spire',
+  path: '/spire',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/annex': typeof AnnexRoute
   '/atrium': typeof AtriumRoute
   '/causeway': typeof CausewayRoute
+  '/spire': typeof SpireRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/annex': typeof AnnexRoute
   '/atrium': typeof AtriumRoute
   '/causeway': typeof CausewayRoute
+  '/spire': typeof SpireRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/annex': typeof AnnexRoute
   '/atrium': typeof AtriumRoute
   '/causeway': typeof CausewayRoute
+  '/spire': typeof SpireRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/annex' | '/atrium' | '/causeway'
+  fullPaths: '/' | '/annex' | '/atrium' | '/causeway' | '/spire'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/annex' | '/atrium' | '/causeway'
-  id: '__root__' | '/' | '/annex' | '/atrium' | '/causeway'
+  to: '/' | '/annex' | '/atrium' | '/causeway' | '/spire'
+  id: '__root__' | '/' | '/annex' | '/atrium' | '/causeway' | '/spire'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   AnnexRoute: typeof AnnexRoute
   AtriumRoute: typeof AtriumRoute
   CausewayRoute: typeof CausewayRoute
+  SpireRoute: typeof SpireRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CausewayRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/spire': {
+      id: '/spire'
+      path: '/spire'
+      fullPath: '/spire'
+      preLoaderRoute: typeof SpireRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   AnnexRoute: AnnexRoute,
   AtriumRoute: AtriumRoute,
   CausewayRoute: CausewayRoute,
+  SpireRoute: SpireRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
