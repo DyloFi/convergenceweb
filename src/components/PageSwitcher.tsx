@@ -6,6 +6,7 @@ const pages = [
   { to: "/annex", label: "The Annex", glyph: "h-6 w-1.5" },
   { to: "/atrium", label: "The Atrium", glyph: "h-3 w-6 rounded-t-full" },
   { to: "/causeway", label: "The Causeway", glyph: "h-4 w-4 rotate-45" },
+  { to: "/spire", label: "The Spire", glyph: "h-6 w-0 border-x-[6px] border-b-[20px] border-x-transparent border-b-graphite group-data-[status=active]:border-b-ink bg-transparent" },
 ] as const;
 
 export function PageSwitcher() {
