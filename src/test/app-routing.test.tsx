@@ -35,4 +35,9 @@ describe("App routing", () => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
     expect(router.matchRoutes("/causeway").at(-1)?.routeId).toBe("/causeway");
   });
+
+  it("matches the spire page for /spire", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    expect(router.matchRoutes("/spire").at(-1)?.routeId).toBe("/spire");
+  });
 });
