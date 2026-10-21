@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnnexRouteImport } from './routes/annex'
 import { Route as AtriumRouteImport } from './routes/atrium'
+import { Route as CausewayRouteImport } from './routes/causeway'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,44 @@ const AtriumRoute = AtriumRouteImport.update({
   path: '/atrium',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CausewayRoute = CausewayRouteImport.update({
+  id: '/causeway',
+  path: '/causeway',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/annex': typeof AnnexRoute
   '/atrium': typeof AtriumRoute
+  '/causeway': typeof CausewayRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/annex': typeof AnnexRoute
   '/atrium': typeof AtriumRoute
+  '/causeway': typeof CausewayRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/annex': typeof AnnexRoute
   '/atrium': typeof AtriumRoute
+  '/causeway': typeof CausewayRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/annex' | '/atrium'
+  fullPaths: '/' | '/annex' | '/atrium' | '/causeway'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/annex' | '/atrium'
-  id: '__root__' | '/' | '/annex' | '/atrium'
+  to: '/' | '/annex' | '/atrium' | '/causeway'
+  id: '__root__' | '/' | '/annex' | '/atrium' | '/causeway'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnnexRoute: typeof AnnexRoute
   AtriumRoute: typeof AtriumRoute
+  CausewayRoute: typeof CausewayRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AtriumRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/causeway': {
+      id: '/causeway'
+      path: '/causeway'
+      fullPath: '/causeway'
+      preLoaderRoute: typeof CausewayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnnexRoute: AnnexRoute,
   AtriumRoute: AtriumRoute,
+  CausewayRoute: CausewayRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
