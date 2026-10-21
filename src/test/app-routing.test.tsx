@@ -40,4 +40,9 @@ describe("App routing", () => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
     expect(router.matchRoutes("/spire").at(-1)?.routeId).toBe("/spire");
   });
+
+  it("matches the hangar page for /hangar", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    expect(router.matchRoutes("/hangar").at(-1)?.routeId).toBe("/hangar");
+  });
 });
