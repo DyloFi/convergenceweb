@@ -167,24 +167,187 @@ function Annex() {
         </div>
       </section>
 
-      {/* EXPLODED PLATE — one drawing stacked three times, drifting apart axonometrically; leader lines tie the layers together */}
-      <section className="relative h-[120vh]">
-        <div className="relative mx-auto mt-[10vh] aspect-[4/5] w-[min(46rem,80vw)]">
-          {[
-            { t: "translate(0,0)", d: 1, z: 30 },
-            { t: "translate(9%,7%)", d: 1.8, z: 20 },
-            { t: "translate(18%,14%)", d: 2.6, z: 10 },
-          ].map((l, i) => (
-            <div key={i} className="absolute inset-0 overflow-hidden frame" style={{ transform: l.t, zIndex: l.z }}>
-              <Plate src={turning.url} pos="45% 40%" className="scale-[1.4]" depth={l.d} />
-            </div>
-          ))}
-          {/* leader lines from layer corners */}
-          <div className="absolute left-[8%] top-[6%] h-px w-[36%] rotate-[24deg] bg-ink/60" />
-          <div className="absolute bottom-[10%] right-[4%] h-px w-[30%] -rotate-[18deg] bg-ink/60" />
+      {/* SECTION 1: THE SYNCHRONOUS CLIMAX HYPOTHESIS & EXPLODED PLATE */}
+      <section className="relative min-h-screen border-b border-graphite/40 py-20">
+        {/* Architectural Header Datum */}
+        <div className="mx-auto flex w-[min(76rem,92vw)] items-baseline justify-between border-b border-ink/40 pb-3 font-mono text-[10px] tracking-[0.25em] text-ink/60">
+          <span>SEC.04 // SYNCHRONOUS CLIMAX DOSSIER</span>
+          <span className="hidden md:inline">WINDOW: 2026–2035 // CONVERGENCE EPOCH</span>
+          <span>SYSTEM_INDEX: 4T-SAECULUM</span>
         </div>
-        <Lines n={2} className="absolute right-[10%] top-[6vh] w-56" />
-        <Box className="absolute bottom-[6vh] left-[10%] h-24 w-64" />
+
+        <div className="mx-auto mt-12 grid w-[min(76rem,92vw)] grid-cols-1 items-start gap-12 lg:grid-cols-12">
+          {/* Axonometric Exploded Plate Stack */}
+          <div className="relative aspect-[4/5] w-full lg:col-span-5">
+            {[
+              { t: "translate(0,0)", d: 1, z: 30, tag: "PHASE 04 // CRISIS CLIMAX (2028-2033)" },
+              { t: "translate(8%,6%)", d: 1.8, z: 20, tag: "PHASE 03 // UNRAVELING (1984-2008)" },
+              { t: "translate(16%,12%)", d: 2.6, z: 10, tag: "PHASE 02 // AWAKENING (1964-1984)" },
+            ].map((l, i) => (
+              <div key={i} className="absolute inset-0 overflow-hidden frame bg-paper" style={{ transform: l.t, zIndex: l.z }}>
+                <Plate src={turning.url} pos="45% 40%" className="scale-[1.4]" depth={l.d} />
+                <div className="absolute left-3 top-3 border border-ink/40 bg-paper/90 px-2 py-0.5 font-mono text-[8px] tracking-widest text-ink backdrop-blur-xs">
+                  {l.tag}
+                </div>
+              </div>
+            ))}
+            <div className="pointer-events-none absolute -right-6 top-[20%] hidden h-px w-12 rotate-[12deg] bg-ink/50 lg:block" />
+            <div className="pointer-events-none absolute -right-6 top-[50%] hidden h-px w-12 -rotate-[8deg] bg-ink/50 lg:block" />
+          </div>
+
+          {/* Master Thesis Ledger */}
+          <div className="space-y-6 lg:col-span-7">
+            <div className="border border-graphite/60 bg-graphite/10 p-6">
+              <div className="flex items-center justify-between font-mono text-[9px] tracking-widest text-ink/60">
+                <span>MONOGRAPH // CHAPTER I</span>
+                <span>HARMONIC CONFLUENCE</span>
+              </div>
+              <h2 className="mt-2 font-mono text-2xl tracking-wider text-ink uppercase">The Synchronous Climax</h2>
+              <p className="mt-3 font-sans text-xs leading-relaxed text-ink/80">
+                Human history is governed by multiple overlapping periodicities operating across vastly different timescales—biological-generational (~80–100y), monetary-imperial (~100–250y), and techno-economic (~50–60y). The 2026–2035 decade represents the first time in modern history that the <strong>Fourth Turning Crisis Climax</strong>, the <strong>Hegemonic Cycle Inflection</strong>, and the <strong>6th Kondratiev Wave Installation</strong> reach their terminal boundaries concurrently.
+              </p>
+            </div>
+
+            {/* Turning Cycle Progression Grid */}
+            <div className="space-y-2">
+              <div className="flex justify-between font-mono text-[9px] tracking-[0.2em] text-ink/60 uppercase">
+                <span>The Four Turnings of the Millennial Saeculum</span>
+                <span>Duration: 1946 – 2033+</span>
+              </div>
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                {[
+                  {
+                    code: "1T: 1946–1964",
+                    title: "THE HIGH",
+                    char: "Institutions robust; individualism submerged. Collective rebuilding post-WWII.",
+                    trust: "Maximum",
+                    active: false,
+                  },
+                  {
+                    code: "2T: 1964–1984",
+                    title: "THE AWAKENING",
+                    char: "Cultural passions ignite; spiritual revolt against institutional conformity.",
+                    trust: "Eroding",
+                    active: false,
+                  },
+                  {
+                    code: "3T: 1984–2008",
+                    title: "THE UNRAVELING",
+                    char: "Cynicism rules; decay of civic fabric, ascendancy of hyper-individualism and debt.",
+                    trust: "Decaying",
+                    active: false,
+                  },
+                  {
+                    code: "4T: 2008–2033",
+                    title: "THE CRISIS",
+                    char: "Catalyst (GFC), institutional collapse, geopolitical friction, synchronous re-founding.",
+                    trust: "Depleted / Climax",
+                    active: true,
+                  },
+                ].map((t, idx) => (
+                  <div
+                    key={idx}
+                    className={`border p-4 transition-all ${
+                      t.active
+                        ? "border-ink bg-ink text-paper shadow-xs"
+                        : "border-graphite/60 bg-graphite/10 text-ink"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between font-mono text-[8px] tracking-widest opacity-75">
+                      <span>{t.code}</span>
+                      <span>TRUST: {t.trust}</span>
+                    </div>
+                    <div className="mt-1 font-mono text-sm font-semibold tracking-wider">{t.title}</div>
+                    <p className="mt-2 font-sans text-[11px] leading-relaxed opacity-90">{t.char}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* SECTION 2: GENERATIONAL CONSTELLATION & EMPIRICAL METRICS */}
+        <div className="mx-auto mt-16 w-[min(76rem,92vw)] border-t border-graphite/40 pt-12">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+            {/* Archetype Manifest Table */}
+            <div className="lg:col-span-7">
+              <div className="border border-graphite/60 bg-paper p-6">
+                <div className="flex items-center justify-between border-b border-graphite/40 pb-3 font-mono text-[10px] tracking-widest text-ink">
+                  <span>GENERATIONAL ARCHETYPES IN CRISIS CLIMAX</span>
+                  <span>SAECULUM RECURRENCE</span>
+                </div>
+                <div className="mt-4 divide-y divide-graphite/30 font-mono text-[11px]">
+                  {[
+                    {
+                      archetype: "PROPHET (Boomer Generation)",
+                      role: "Senior Leadership / Moral Visionaries",
+                      desc: "Entering elderhood; provide the uncompromising ideological principles that sharpen crisis stakes.",
+                    },
+                    {
+                      archetype: "NOMAD (Generation X)",
+                      role: "Midlife Pragmatists / Executioners",
+                      desc: "Skeptical, self-reliant managers steering fragile systems through operational shocks.",
+                    },
+                    {
+                      archetype: "HERO (Millennial Generation)",
+                      role: "Young Civic Cohort / Collective Force",
+                      desc: "Team-oriented, pressured, rising into leadership to physically resolve and rebuild civic institutions.",
+                    },
+                    {
+                      archetype: "ARTIST (Gen Z / Generation Alpha)",
+                      role: "Youth / Post-Crisis Consolidators",
+                      desc: "Overprotected and sensitive in crisis; will craft the nuanced consensus of the next High.",
+                    },
+                  ].map((row, idx) => (
+                    <div key={idx} className="py-3">
+                      <div className="flex items-baseline justify-between text-ink font-semibold">
+                        <span>{row.archetype}</span>
+                        <span className="text-[9px] text-ink/60">{row.role}</span>
+                      </div>
+                      <p className="mt-1 font-sans text-[11px] text-ink/75 leading-relaxed">{row.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Empirical Audit & Catalysts Panel */}
+            <div className="space-y-4 lg:col-span-5">
+              <div className="border border-graphite/60 bg-graphite/15 p-6">
+                <div className="font-mono text-[10px] tracking-widest text-ink/60 uppercase">Institutional Stress Indicators</div>
+                <div className="mt-4 space-y-3 font-mono text-[11px]">
+                  <div className="flex justify-between border-b border-graphite/30 pb-2">
+                    <span className="text-ink/80">Sovereign Debt / GDP Ratio</span>
+                    <span className="text-ink font-semibold">&gt; 125% (Dalio Stage 5)</span>
+                  </div>
+                  <div className="flex justify-between border-b border-graphite/30 pb-2">
+                    <span className="text-ink/80">Institutional Trust Rating</span>
+                    <span className="text-ink font-semibold">Historic Low (Pew 2024)</span>
+                  </div>
+                  <div className="flex justify-between border-b border-graphite/30 pb-2">
+                    <span className="text-ink/80">K-Wave Techno-Regime</span>
+                    <span className="text-ink font-semibold">6th Wave (AI / Bio)</span>
+                  </div>
+                  <div className="flex justify-between pb-1">
+                    <span className="text-ink/80">Crisis Climax Window</span>
+                    <span className="text-ink font-semibold">2028 – 2033</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border border-ink/40 bg-paper p-5">
+                <div className="font-mono text-[9px] tracking-widest text-ink uppercase">Failure Mode Register</div>
+                <p className="mt-2 font-sans text-[11px] leading-relaxed text-ink/80">
+                  Critical vulnerability: Asymmetric escalation during an institutional vacuum. Historical turnings resolve only when public consensus delegates extraordinary authority to central institutions to navigate existential hazard.
+                </p>
+                <div className="mt-4 flex items-center justify-between border-t border-graphite/40 pt-2 font-mono text-[8px] tracking-widest text-ink/60">
+                  <span>AUDIT STATUS: VERIFIED</span>
+                  <span>CONVERGENCE_MONOGRAPH // SEC_04</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* GAUGE — concentric rings with a needle that sweeps as you pass through the section */}
